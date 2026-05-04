@@ -1,0 +1,110 @@
+@extends('layouts.app')
+@section('title', 'Project')
+@section('content')
+<section>
+    <section class="p-2 w-full h-fit">
+        <div class="flex justify-between items-center">
+            <h1 class="font-bold p-3 text-3xl">{{$project->name}}</h1>
+            <div class="flex justify-around items-center w-2/3">
+                <div class="flex justify-around items-center w-2/3">
+                    <p class="bg-purple-400 text-white p-3 text-center rounded-full">{{__($project->category)}}</p>
+                    <p class="bg-purple-400 text-white p-3 text-center rounded-full">{{__($project->type)}}</p>
+                    <p class="bg-purple-400 text-white p-3 text-center rounded-full">{{__($project->created_at->format('M d, Y'))}}</p>
+                    <p class="bg-purple-400 text-white p-3 text-center rounded-full">{{__($project->status)}}</p>
+                </div>
+                <div>
+                    @if(Illuminate\Support\Facades\Gate::allows('checkView' , [App\Models\Project::class , $project]))
+                        <button id="button_project_setting">
+                            <x-svg-setting/>
+                        </button>
+                        <div @if ($errors->hasAny(['name' , 'Category' , 'budget' , 'description'])) class="absolute w-16 h-fit rounded-lg shadow-md p-4 mt-2" @else class="hidden absolute w-16 h-fit rounded-lg shadow-md p-4 mt-2" @endif id="project_setting">
+                            <div class="w-full h-full flex flex-col items-center">
+                                <x-svg-info width="22" height="22" class="mb-4"/>
+
+                                <button id="button_edit_project">
+                                    <x-svg-edit width="22" height="22" class="mb-4"/>
+                                </button>
+                                <x-project-edit :errors="$errors" :project="$project" id="edit_project" />
+
+                                <form action="{{route('project.destroy' , $project->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button>
+                                        <x-svg-trash/>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="p-6 w-full h-[20vh]">{!!$project->description!!}</div>
+        <div>
+            <h1 class="pb-4 px-2 text-3xl font-bold">Attachment</h1>
+            <table>
+                @forelse ($project->attachments as $key => $attachment )
+                    <tr class="border border-gray-300 p-5">
+                        <td class="border border-gray-300 p-5">
+                            {{$key+1}}
+                        </td>
+                        <td class="border border-gray-300 p-5">
+                            <a class="text-blue-300 underline" href="{{route('utilities.viewFile' , ['App\\Models\\Attachment' , $attachment->id , 'attachment'])}}" target="_blank">{{$attachment->attachment}}</a>
+                        </td>
+                        <td class="border border-gray-300 p-5">
+                           <x-svg-edit width="22" height="22" class="mb-4"/>
+                        </td>
+                        <td class="border border-gray-300 p-5">
+                            <x-form-structure action="{{route('attachment.destroy' , [$attachment->id])}}" method="DELETE" button="svg-cross"></x-form-structure>
+                        </td>
+                    </tr>
+                @empty
+                    <p class=" w-full h-[20vh] flex justify-center items-center col-start-1 col-end-3">{{__("not have any attachments")}}</p>
+                @endforelse
+            </table>
+        </div>
+    </section>
+    <section class="p-2 w-full h-fit">
+        <div class="mb-5 flex justify-between items-center">
+            <h1 class="font-bold p-3 text-3xl">{{__('Tasks')}}</h1>
+            @if(Illuminate\Support\Facades\Gate::allows('create' , [App\Models\Task::class , $project]))
+                <button class="font-bold p-3 text-3xl" id="button_new_task">
+                    <x-svg-create/>
+                </button>
+                <x-task-create :project="$project" id="new_task"/>
+            @endif
+        </div>
+        @if(Illuminate\Support\Facades\Gate::allows('checkView' , [App\Models\Project::class , $project]))
+            <div>
+                @forelse ($project->tasks as $task)
+                    <x-card-task :task="$task" :project="$project"/>
+                @empty
+                    <p class=" w-full h-[50vh] flex justify-center items-center col-start-1 col-end-3">{{__("You do not have any tasks")}}<button id="button_new_task_other" class="text-blue-600 underline ml-1">{{__("click here to create a new task.")}}</button></p>
+                @endforelse
+            </div>
+        @else
+            @forelse ($project->tasks as $task)
+                <x-card-task :task="$task" :project="$project"/>
+            @empty
+                <p class=" w-full h-[50vh] flex justify-center items-center col-start-1 col-end-3">{{__("not any tasks yet!")}}</p>
+            @endforelse
+        @endif
+    </section>
+
+    <section class="p-2 w-full h-fit">
+        <div class="mb-5 flex justify-between items-center">
+            <h1 class="font-bold p-3 text-3xl">{{__('Comments')}}</h1>
+        </div>
+        <div>
+            @forelse ($project->comments as $comments)
+
+            @empty
+                <p class=" w-full h-[50vh] flex justify-center items-center col-start-1 col-end-3">{{__("No comments yet!")}}</p>
+            @endforelse
+        </div>
+        <div>
+            {{-- form to send --}}
+        </div>
+    </section>
+</section>
+@endsection

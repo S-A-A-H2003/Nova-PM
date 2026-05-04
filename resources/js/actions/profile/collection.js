@@ -1,0 +1,16 @@
+import overview from "./overview.js";
+import summary from "./summary.js";
+import education from "./education.js";
+import skills from "./skills.js";
+import professional_experience from "./professional_experience.js";
+import languages from "./languages.js";
+import courses from "./courses.js";
+import general from "./general.js";
+overview();
+summary();
+education();
+skills();
+professional_experience();
+languages();
+courses();
+general();
