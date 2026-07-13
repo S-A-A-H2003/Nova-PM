@@ -5,7 +5,7 @@ export default function summary(){
     const form_edit_summary = document.getElementById('form_edit_summary');
     const view_summary = document.getElementById('view_summary');
 
-    if (button_create_summary) {
+    if (button_create_summary && form_create_summary) {
         button_create_summary.addEventListener('click' , function() {
             if (form_create_summary.classList.contains('hidden')) {
                 form_create_summary.classList.remove('hidden');

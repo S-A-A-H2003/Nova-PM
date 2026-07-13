@@ -1,10 +1,10 @@
 @props([
     'result_search' => ''
 ])
-<form action="{{URL::current()}}" method="GET" class="relative w-full max-w-md h-12 bg-white rounded-xl shadow-sm flex items-center border border-gray-200 hover:border-violet-300 transition-colors">
+<form action="{{URL::current()}}" method="GET" class="relative w-full max-w-md h-12 bg-white/90 rounded-lg shadow-sm flex items-center border border-slate-200 hover:border-violet-300 transition-colors">
 
-    <input type="text" name="search" id="search" placeholder="{{ __('Search...') }}" value="{{$result_search}}" class="w-full h-full border-none rounded-xl pl-5 pr-12 placeholder-gray-400 text-gray-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent">
-    <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 hover:bg-gray-100 rounded-lg transition-colors">
+    <input type="text" name="search" id="search" placeholder="{{ __('Search...') }}" value="{{$result_search}}" class="w-full h-full border-none rounded-lg pl-5 pr-12 placeholder-slate-400 text-slate-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent">
+    <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 hover:bg-slate-100 rounded-lg transition-colors">
         <svg
             width="20"
             height="20"

@@ -5,11 +5,12 @@ namespace App\Models;
 use App\Observers\ProjectObserve;
 use App\Traits\HasSearch;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    use HasUuids , HasSearch;
+    use HasFactory, HasUuids, HasSearch;
 
     public static function booted()
     {

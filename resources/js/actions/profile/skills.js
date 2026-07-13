@@ -3,7 +3,7 @@ export default function skills(){
     const form_create_skills = document.getElementById('form_create_skills');
     const view_skills = document.getElementById('view_skills');
 
-    if (button_create_skills) {
+    if (button_create_skills && form_create_skills && view_skills) {
         button_create_skills.addEventListener('click' , function() {
             if (form_create_skills.classList.contains('hidden')) {
                 form_create_skills.classList.remove('hidden');
@@ -14,8 +14,8 @@ export default function skills(){
             }
         })
     }
-    for (let index = 1; index <= skills_counter; index++) {
-        const editBtn = document.getElementById(`button_edit_skills_${index}`);
+    document.querySelectorAll('[id^="button_edit_skills_"]').forEach(function(editBtn) {
+        const index = editBtn.id.replace('button_edit_skills_', '');
         const editForm = document.getElementById(`form_edit_skills_${index}`);
         if (editBtn && editForm) {
             editBtn.addEventListener('click' , function() {
@@ -29,5 +29,5 @@ export default function skills(){
                 }
             })
         }
-    }
+    })
 }

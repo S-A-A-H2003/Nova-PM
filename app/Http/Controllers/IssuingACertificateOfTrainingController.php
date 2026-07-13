@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class IssuingACertificateOfTrainingController extends Controller
 {
-    public function issuingACertificateOfTraining()
+    public function issuingACertificateOfTraining(Request $request)
     {
-        return back()->with('error' , 'not finish yet 😒');
+        $pdf = Pdf::loadView('IssuingPdf.certificate-of-training-view' , ['name' => $request->user()->name]);
+        return $pdf->download('certificate of training completed for ' . $request->user()->name . '.pdf');
     }
 
-    public function showACertificateOfTraining()
+    public function showACertificateOfTraining(Request $request)
     {
-        return back()->with('error' , 'not finish yet 😒');
+        $pdf = Pdf::loadView('IssuingPdf.certificate-of-training-view' , ['name' => $request->user()->name]);
+        return $pdf->stream('certificate of training completed for ' . $request->user()->name . '.pdf');
     }
 }

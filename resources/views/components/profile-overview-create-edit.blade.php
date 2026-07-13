@@ -219,7 +219,7 @@
     <div @if($errors->hasAny('name' , 'email' , 'phone_number' , 'date_pirth' , 'gender' , 'address' , 'occupation' , 'link_one' , 'link_two' , 'link_three' , 'link_one_as' , 'link_two_as' , 'link_three_as')) class="w-full h-fit mt-6 p-5 border border-violet-500 rounded-md" @else class="hidden w-full h-fit mt-6 p-5 border border-violet-500 rounded-md" @endif id="form_edit_overview">
         <x-form-structure action="{{route('profile.cv.overview')}}" buttonClass="w-full h-fit rounded-xl bg-violet-300 flex justify-center items-center p-3 mt-5" buttonClassChiled="fill-white" formClass="w-full h-fit flex flex-col justify-center items-center p-6">
             @if($userInformation->photo ?? null)
-                <x-form-fieldset-file name="photo" isUpdate="{{true}}" fieldsetClass="w-full h-fit">
+                <x-form-fieldset-file name="photo" fieldsetClass="w-full h-fit">
                         <a href="{{route('utilities.viewFile' , ['App\\Models\\Information' , $userInformation->id , 'photo' , 'false' , 'null' , 'false'])}}" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline">View Previous Photo</a>
                 </x-form-fieldset-file>
             @else

@@ -14,6 +14,9 @@ class ProjectObserve
     public function created(Project $project): void
     {
         $user = Auth::user();
+        if (!$user || !$user->wallet) {
+            return;
+        }
         $balance = $user->wallet->balance;
         if ($project->budget > 0) {
             try {
@@ -37,6 +40,9 @@ class ProjectObserve
     public function deleted(Project $project): void
     {
         $user = Auth::user();
+        if (!$user || !$user->wallet) {
+            return;
+        }
         $balance = $user->wallet->balance;
         if ($project->budget > 0) {
             try {

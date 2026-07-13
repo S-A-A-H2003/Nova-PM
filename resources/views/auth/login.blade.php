@@ -1,8 +1,14 @@
 <x-guest-layout>
+    <div class="mb-8 text-center">
+        <h1 class="text-2xl font-bold text-slate-900">{{ __('Log in') }}</h1>
+        <p class="mt-2 text-sm text-slate-500">{{ __('Welcome back to Maham') }}</p>
+    </div>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" data-requires-confirm="true" data-confirm-title="{{ __('Confirm submission') }}" data-confirm-text="{{ __('Are you sure you want to log in?') }}">
+
         @csrf
 
         <!-- Email Address -->
@@ -27,14 +33,14 @@
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded backdrop-blur-md bg-white/30 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-white">{{ __('Remember me') }}</span>
+                <input id="remember_me" type="checkbox" class="rounded border-slate-300 bg-white text-violet-600 shadow-sm focus:ring-violet-500" name="remember">
+                <span class="ms-2 text-sm text-slate-600">{{ __('Remember me') }}</span>
             </label>
         </div>
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-white hover:text-violet-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                <a class="text-sm font-semibold text-slate-500 hover:text-violet-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif

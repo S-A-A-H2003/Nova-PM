@@ -14,6 +14,8 @@ class SummaryUpdateRequest extends FormRequest
         return true;
     }
 
+    protected $errorBag = 'summary';
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,7 +24,7 @@ class SummaryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'summary_value' => ['required' , 'string']
+            'summary_value_update' => ['required' , 'string']
         ];
     }
 }

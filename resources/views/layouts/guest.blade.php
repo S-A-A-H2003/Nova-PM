@@ -14,15 +14,15 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased bg-gradient-to-b from-violet-100 via-violet-200 to-violet-300 min-h-screen">
+    <body class="font-sans text-slate-900 antialiased min-h-screen">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 px-4">
-            <div class="mb-6">
+            <div class="mb-6 animate-soft-scale">
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-violet-600" />
+                    <x-application-logo class="w-20 h-20 fill-current text-violet-600 drop-shadow-sm" />
                 </a>
             </div>
-            <div class="w-full sm:max-w-md">
-                <div class="bg-white/90 backdrop-blur-md shadow-2xl rounded-2xl overflow-hidden border border-violet-100">
+            <div class="w-full sm:max-w-md animate-fade-in-up">
+                <div class="glass-panel rounded-lg overflow-hidden">
                     <div class="px-8 py-10">
                         {{ $slot }}
                     </div>

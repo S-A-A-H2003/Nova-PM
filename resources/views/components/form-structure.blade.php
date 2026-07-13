@@ -7,8 +7,9 @@
     'buttonClassChiled' => '',
     'id' => ''
 ])
-<form action="{{$action}}" method="POST" class="{{$formClass}}" enctype="multipart/form-data" id="{{$id}}">
+<form action="{{$action}}" method="POST" class="{{$formClass}}" enctype="multipart/form-data" id="{{$id}}" data-requires-confirm="true" data-confirm-title="{{ __('Confirm submission') }}" data-confirm-text="{{ __('Are you sure you want to submit this form?') }}">
     @csrf
+
     @if ($method)
         @method($method)
     @endif

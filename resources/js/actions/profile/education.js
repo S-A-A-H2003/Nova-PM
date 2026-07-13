@@ -4,7 +4,7 @@ export default function education(){
     const view_education = document.getElementById('view_education');
 
 
-    if (button_create_education) {
+    if (button_create_education && form_create_education && view_education) {
         button_create_education.addEventListener('click' , function() {
             if (form_create_education.classList.contains('hidden')) {
                 form_create_education.classList.remove('hidden');
@@ -16,8 +16,8 @@ export default function education(){
         })
     }
 
-    for (let index = 1; index <= education_counter; index++) {
-        const editBtn = document.getElementById(`button_edit_education_${index}`);
+    document.querySelectorAll('[id^="button_edit_education_"]').forEach(function(editBtn) {
+        const index = editBtn.id.replace('button_edit_education_', '');
         const editForm = document.getElementById(`form_edit_education_${index}`);
         if (editBtn && editForm) {
             editBtn.addEventListener('click' , function() {
@@ -31,5 +31,5 @@ export default function education(){
                 }
             })
         }
-    }
+    })
 }

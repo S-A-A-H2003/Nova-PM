@@ -3,7 +3,7 @@ export default function courses(){
     const form_create_courses = document.getElementById('form_create_courses');
     const view_courses = document.getElementById('view_courses');
 
-    if (button_create_courses) {
+    if (button_create_courses && form_create_courses && view_courses) {
         button_create_courses.addEventListener('click' , function() {
             if (form_create_courses.classList.contains('hidden')) {
                 form_create_courses.classList.remove('hidden');
@@ -14,8 +14,8 @@ export default function courses(){
             }
         })
     }
-    for (let index = 1; index <= courses_counter; index++) {
-        const editBtn = document.getElementById(`button_edit_courses_${index}`);
+    document.querySelectorAll('[id^="button_edit_courses_"]').forEach(function(editBtn) {
+        const index = editBtn.id.replace('button_edit_courses_', '');
         const editForm = document.getElementById(`form_edit_courses_${index}`);
         if (editBtn && editForm) {
             editBtn.addEventListener('click' , function() {
@@ -29,5 +29,5 @@ export default function courses(){
                 }
             })
         }
-    }
+    })
 }

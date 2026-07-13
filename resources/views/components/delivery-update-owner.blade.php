@@ -3,7 +3,7 @@
     "project" ,
 ])
 @php
-    $options = ["" => "{{ __('Select Evaluation') }}" , "pad" => "{{ __('Pad') }}" , "good" => "{{ __('Good') }}" , "very good" => "{{ __('Very Good') }}" , "excellent" => "{{ __('Excellent') }}"];
+    $options = ["Select Evaluation " => "" , "Pad" => "pad" , "Good" => "good" , "Very Good" => "very good" , "Excellent" => "excellent"];
 @endphp
 <div class="border mt-4 rounded-lg p-4 w-full bg-gray-50">
     <h4 class="text-sm font-semibold text-gray-700 mb-3">{{ __('Evaluate Delivery') }}</h4>

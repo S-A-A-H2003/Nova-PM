@@ -41,38 +41,12 @@ Built using Laravel MVC architecture for scalability, security, and clean code s
 - MySQL Database
 - Git & GitHub
 
----
-
-## 📁 Project Structure
-
-```
-
-app/
-├── Http/
-├── Models/
-
-resources/
-├── views/
-│   ├── projects/
-│   ├── portfolio/
-│   ├── cv/
-│   ├── layouts/
-
-routes/
-├── web.php
-
-database/
-├── migrations/
-
-````id="struct1"
-
----
 
 ## ⚙️ Installation
 
 ```bash
-git clone https://github.com/your-username/project-management-portfolio.git
-cd project-management-portfolio
+git clone https://github.com/S-A-A-H2003/Maham.git
+cd Maham
 composer install
 npm install
 cp .env.example .env
@@ -86,40 +60,13 @@ php artisan migrate
 php artisan serve
 ```
 
----
-
-## 📸 Project Screenshots
-
-<p align="center">
-  <img src="https://your-image-link.com/dashboard.png" width="45%" />
-  <img src="https://your-image-link.com/projects.png" width="45%" />
-</p>
-
-<p align="center">
-  <img src="https://your-image-link.com/portfolio.png" width="45%" />
-  <img src="https://your-image-link.com/cv.png" width="45%" />
-</p>
-
----
-
-## 🚀 Future Improvements
-
-* 🌐 Public freelancer profiles (shareable links)
-* 💬 Client messaging system
-* ⭐ Rating system for freelancers
-* 📈 Analytics dashboard for projects
-* 📄 PDF export for CV
-* 🔗 API for mobile application
-
----
-
 ## 👨‍💻 Developer
 
 **Saeed Alaa Abu Halima**
-Backend Developer (PHP | Laravel)
+Backend Developer (PHP | Laravel With React)
 
-* GitHub: [https://github.com/your-profile](https://github.com/Profile)
-* LinkedIn: [https://linkedin.com/in/your-profile](https://linkedin.com/in/S-A-A-H2003)
+* GitHub: [https://github.com/S-A-A-H2003](https://github.com/S-A-A-H2003)
+* LinkedIn: [https://linkedin.com/in/s-a-a-h2003](https://www.linkedin.com/in/s-a-a-h2003)
 
 ---
 

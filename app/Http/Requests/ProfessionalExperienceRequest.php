@@ -14,6 +14,8 @@ class ProfessionalExperienceRequest extends FormRequest
         return true;
     }
 
+    protected $errorBag = 'professionalExperience';
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,11 +24,12 @@ class ProfessionalExperienceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "professional_experience_value" => ['required' , 'string'],
-            "professional_experience_start_date" => ['required' , 'date'],
-            "professional_experience_end_date" => ['required' , 'date' ,'after:professional_experience_start_date'],
-            "professional_experience_adress" => ['required' , 'string'],
-            "professional_experience_file" => ['required' , 'file']
+            "professional_experience_value_create" => ['required' , 'string'],
+            "professional_experience_start_date_create" => ['required' , 'date'],
+            "professional_experience_end_date_create" => ['required' , 'date' ,'after:professional_experience_start_date_create'],
+            "professional_experience_adress_create" => ['required' , 'string'],
+            "professional_experience_description_create" => ['required' , 'string'],
+            "professional_experience_file_create" => ['required' , 'file']
         ];
     }
 }

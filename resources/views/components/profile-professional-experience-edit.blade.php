@@ -218,7 +218,7 @@
             <x-form-fieldset name="professional_experience_end_date" type="month" value="{{json_decode($professionalExperience->extensions)->professional_experience_end_date}}" lableName="End Date" placeholder="End Date" fieldsetClass="w-full h-fit"/>
             <x-form-fieldset-select name="professional_experience_adress" :options="$countries" value="{{json_decode($professionalExperience->extensions)->professional_experience_adress}}" lableName="Adress" placeholder="Adress" fieldsetClass="w-full h-fit"/>
             <x-form-fieldset-textarea name="professional_experience_description" value="{{json_decode($professionalExperience->extensions)->professional_experience_description ?? ''}}" lableName="Description" placeholder="Description" fieldsetClass="w-full h-fit"/>
-            <x-form-fieldset-file name="professional_experience_file" isUpdate="{{true}}" fieldsetClass="w-full h-fit">
+            <x-form-fieldset-file name="professional_experience_file" fieldsetClass="w-full h-fit">
                 <a href="{{route('utilities.viewFile' , ['App\\Models\\CvContent' , $professionalExperience->id , 'extensions' , true ,"professional_experience_file"])}}" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline">View Previous File</a>
             </x-form-fieldset-file>
         </x-form-structure>

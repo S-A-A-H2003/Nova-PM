@@ -28,7 +28,7 @@ class CvContentController extends Controller
         $data = [
             'cv_id' => Auth::user()->cv->id,
             'type' => 'summary',
-            'value' => $utilities->descriptionClean($request->input('summary_value'))
+            'value' => $utilities->descriptionClean($request->input('summary_value_create'))
         ];
 
         $exists = CvContent::where('type' , 'summary')->exists();
@@ -46,7 +46,7 @@ class CvContentController extends Controller
         $data = [
             'cv_id' => Auth::user()->cv->id,
             'type' => 'summary',
-            'value' => $utilities->descriptionClean($request->input('summary_value'))
+            'value' => $utilities->descriptionClean($request->input('summary_value_update'))
         ];
         $cv_content->update($data);
         return redirect()->route('profile.view')->with('success' , 'ok');
@@ -63,16 +63,16 @@ class CvContentController extends Controller
     {
         $request->validated();
         $data = [
-            "value" => $request->input('education_value'),
+            "value" => $request->input('education_value_create'),
             "cv_id" => Auth::user()->cv->id,
             "type" => 'education',
             "extensions" => json_encode([
-                "education_education" => $request->input('education_education'),
-                "education_adress" => $request->input('education_adress'),
-                "education_start_date" => $request->input('education_start_date'),
-                "education_end_date" => $request->input('education_end_date'),
-                "education_gpa" => $request->input('education_gpa'),
-                "education_file" => $request->file('education_file')->store('/Profile/Cv/Educations'),
+                "education_education" => $request->input('education_education_create'),
+                "education_adress" => $request->input('education_adress_create'),
+                "education_start_date" => $request->input('education_start_date_create'),
+                "education_end_date" => $request->input('education_end_date_create'),
+                "education_gpa" => $request->input('education_gpa_create'),
+                "education_file" => $request->file('education_file_create')->store('/Profile/Cv/Educations'),
             ])
         ];
         CvContent::create($data);
@@ -84,20 +84,20 @@ class CvContentController extends Controller
         $cv_content = CvContent::findOrFail($id);
         $request->validated();
         $data = [
-            "value" => $request->input('education_value'),
+            "value" => $request->input('education_value_update'),
             "cv_id" => Auth::user()->cv->id,
             "type" => 'education',
             "extensions" => json_encode([
-                "education_education" => $request->input('education_education'),
-                "education_adress" => $request->input('education_adress'),
-                "education_start_date" => $request->input('education_start_date'),
-                "education_end_date" => $request->input('education_end_date'),
-                "education_gpa" => $request->input('education_gpa'),
+                "education_education" => $request->input('education_education_update'),
+                "education_adress" => $request->input('education_adress_update'),
+                "education_start_date" => $request->input('education_start_date_update'),
+                "education_end_date" => $request->input('education_end_date_update'),
+                "education_gpa" => $request->input('education_gpa_update'),
             ])
         ];
-        if ($request->hasFile('education_file')) {
+        if ($request->hasFile('education_file_update')) {
             $data['extensions'] = json_decode($data['extensions']);
-            $data['extensions']->education_file = $request->file('education_file')->store('/Profile/Cv/Educations');
+            $data['extensions']->education_file = $request->file('education_file_update')->store('/Profile/Cv/Educations');
             $data['extensions'] = json_encode($data['extensions']);
             $old = json_decode($cv_content->extensions)->education_file;
             $cv_content->update($data);
@@ -130,7 +130,7 @@ class CvContentController extends Controller
     {
         $request->validated();
         $data = [
-            "value" => $request->input('skills_value'),
+            "value" => $request->input('skills_value_create'),
             "cv_id" => Auth::user()->cv->id,
             "type" => 'skills',
         ];
@@ -143,7 +143,7 @@ class CvContentController extends Controller
         $cv_content = CvContent::findOrFail($id);
         $request->validated();
         $data = [
-            "value" => $request->input('skills_value'),
+            "value" => $request->input('skills_value_update'),
             "cv_id" => Auth::user()->cv->id,
             "type" => 'skills',
         ];
@@ -162,15 +162,15 @@ class CvContentController extends Controller
     {
         $request->validated();
         $data = [
-            "value" => $request->input('professional_experience_value'),
+            "value" => $request->input('professional_experience_value_create'),
             "cv_id" => Auth::user()->cv->id,
             "type" => 'professionalExperience',
             "extensions" => json_encode([
-                "professional_experience_start_date" => $request->input('professional_experience_start_date'),
-                "professional_experience_end_date" => $request->input('professional_experience_end_date'),
-                "professional_experience_adress" => $request->input('professional_experience_adress'),
-                "professional_experience_description" => $utilities->descriptionClean($request->input('professional_experience_description')),
-                "professional_experience_file" => $request->file('professional_experience_file')->store('/Profile/Cv/ProfessionalExperiences'),
+                "professional_experience_start_date" => $request->input('professional_experience_start_date_create'),
+                "professional_experience_end_date" => $request->input('professional_experience_end_date_create'),
+                "professional_experience_adress" => $request->input('professional_experience_adress_create'),
+                "professional_experience_description" => $utilities->descriptionClean($request->input('professional_experience_description_create')),
+                "professional_experience_file" => $request->file('professional_experience_file_create')->store('/Profile/Cv/ProfessionalExperiences'),
             ])
         ];
         CvContent::create($data);
@@ -182,19 +182,19 @@ class CvContentController extends Controller
         $cv_content = CvContent::findOrFail($id);
         $request->validated();
         $data = [
-            "value" => $request->input('professional_experience_value'),
+            "value" => $request->input('professional_experience_value_update'),
             "cv_id" => Auth::user()->cv->id,
             "type" => 'professionalExperience',
             "extensions" => json_encode([
-                "professional_experience_start_date" => $request->input('professional_experience_start_date'),
-                "professional_experience_end_date" => $request->input('professional_experience_end_date'),
-                "professional_experience_adress" => $request->input('professional_experience_adress'),
-                "professional_experience_description" => $utilities->descriptionClean($request->input('professional_experience_description')),
+                "professional_experience_start_date" => $request->input('professional_experience_start_date_update'),
+                "professional_experience_end_date" => $request->input('professional_experience_end_date_update'),
+                "professional_experience_adress" => $request->input('professional_experience_adress_update'),
+                "professional_experience_description" => $utilities->descriptionClean($request->input('professional_experience_description_update')),
             ])
         ];
-        if ($request->hasFile('professional_experience_file')) {
+        if ($request->hasFile('professional_experience_file_update')) {
             $data['extensions'] = json_decode($data['extensions']);
-            $data['extensions']->professional_experience_file = $request->file('professional_experience_file')->store('/Profile/Cv/ProfessionalExperiences');
+            $data['extensions']->professional_experience_file = $request->file('professional_experience_file_update')->store('/Profile/Cv/ProfessionalExperiences');
             $data['extensions'] = json_encode($data['extensions']);
             $old = json_decode($cv_content->extensions)->professional_experience_file;
             $cv_content->update($data);
@@ -226,12 +226,12 @@ class CvContentController extends Controller
     {
         $request->validated();
         $data = [
-            "value" => $request->input('languages_value'),
+            "value" => $request->input('languages_value_create'),
             "cv_id" => Auth::user()->cv->id,
             "type" => 'languages',
             "extensions" => json_encode([
-                "languages_level" => $request->input('languages_level'),
-                "languages_file" => $request->hasFile('education_file') ? $request->file('languages_file')->store('/Profile/Cv/Languages') : null,
+                "languages_level" => $request->input('languages_level_create'),
+                "languages_file" => $request->hasFile('languages_file_create') ? $request->file('languages_file_create')->store('/Profile/Cv/Languages') : null,
             ])
         ];
         CvContent::create($data);
@@ -243,16 +243,16 @@ class CvContentController extends Controller
         $cv_content = CvContent::findOrFail($id);
         $request->validated();
         $data = [
-            "value" => $request->input('languages_value'),
+            "value" => $request->input('languages_value_update'),
             "cv_id" => Auth::user()->cv->id,
             "type" => 'languages',
             "extensions" => json_encode([
-                "languages_level" => $request->input('languages_level'),
+                "languages_level" => $request->input('languages_level_update'),
             ])
         ];
-        if ($request->hasFile('languages_file')) {
+        if ($request->hasFile('languages_file_update')) {
             $data['extensions'] = json_decode($data['extensions']);
-            $data['extensions']->languages_file = $request->file('languages_file')->store('/Profile/Cv/Languages');
+            $data['extensions']->languages_file = $request->file('languages_file_update')->store('/Profile/Cv/Languages');
             $data['extensions'] = json_encode($data['extensions']);
             $old = json_decode($cv_content->extensions)->languages_file;
             $cv_content->update($data);
@@ -283,15 +283,16 @@ class CvContentController extends Controller
     public function courses(CoursesRequest $request , Utilities $utilities)
     {
         $request->validated();
+        $request->validated();
         $data = [
-            "value" => $request->input('courses_value'),
+            "value" => $request->input('courses_value_create'),
             "cv_id" => Auth::user()->cv->id,
             "type" => 'courses',
             "extensions" => json_encode([
-                "courses_place" => $request->input('courses_place'),
-                "courses_start_date" => $request->input('courses_start_date'),
-                "courses_end_date" => $request->input('courses_end_date'),
-                "courses_file" => $request->file('courses_file')->store('/Profile/Cv/Courses'),
+                "courses_place" => $request->input('courses_place_create'),
+                "courses_start_date" => $request->input('courses_start_date_create'),
+                "courses_end_date" => $request->input('courses_end_date_create'),
+                "courses_file" => $request->file('courses_file_create')->store('/Profile/Cv/Courses'),
             ])
         ];
         CvContent::create($data);
@@ -303,18 +304,18 @@ class CvContentController extends Controller
         $cv_content = CvContent::findOrFail($id);
         $request->validated();
         $data = [
-            "value" => $request->input('courses_value'),
+            "value" => $request->input('courses_value_update'),
             "cv_id" => Auth::user()->cv->id,
             "type" => 'courses',
             "extensions" => json_encode([
-                "courses_place" => $request->input('courses_place'),
-                "courses_start_date" => $request->input('courses_start_date'),
-                "courses_end_date" => $request->input('courses_end_date'),
+                "courses_place" => $request->input('courses_place_update'),
+                "courses_start_date" => $request->input('courses_start_date_update'),
+                "courses_end_date" => $request->input('courses_end_date_update'),
             ])
         ];
-        if ($request->hasFile('file')) {
+        if ($request->hasFile('courses_file_update')) {
             $data['extensions'] = json_decode($data['extensions']);
-            $data['extensions']->courses_file = $request->file('courses_file')->store('/Profile/Cv/Courses');
+            $data['extensions']->courses_file = $request->file('courses_file_update')->store('/Profile/Cv/Courses');
             $data['extensions'] = json_encode($data['extensions']);
             $old = json_decode($cv_content->extensions)->courses_file;
             $cv_content->update($data);

@@ -14,6 +14,8 @@ class CoursesRequest extends FormRequest
         return true;
     }
 
+    protected $errorBag = 'courses';
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,11 +24,11 @@ class CoursesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "courses_value" => ['required' , 'string'],
-            "courses_place" => ['required' , 'string'],
-            "courses_start_date" => ['required' , 'date'],
-            "courses_end_date" => ['required' , 'date' ,'after:courses_start_date'],
-            "courses_file" => ['required' , 'file']
+            "courses_value_create" => ['required' , 'string'],
+            "courses_place_create" => ['required' , 'string'],
+            "courses_start_date_create" => ['required' , 'date'],
+            "courses_end_date_create" => ['required' , 'date' ,'after:courses_start_date_create'],
+            "courses_file_create" => ['required' , 'file']
         ];
     }
 }

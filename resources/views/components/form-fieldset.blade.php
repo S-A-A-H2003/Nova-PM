@@ -2,13 +2,13 @@
     'id' => '',
     'fieldsetClass' => '',
     'name' => 'name',
-    'lableClass' => 'text-gray-700 font-medium text-sm mb-2 block',
+    'lableClass' => 'text-slate-700 font-semibold text-sm mb-2 block',
     'lableName' => '',
     'type' => 'text',
     'value' => '',
     'placeholder' => '',
-    'inputClass' => 'rounded-lg border-[1.5px] border-gray-300 bg-white w-full p-3 mt-1 text-gray-700 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 transition-all',
-    'inputClassWitherror' => 'rounded-lg border-[1.5px] border-red-500 bg-red-50 placeholder-red-500 w-full p-3 mt-1 text-red-700 focus:border-red-500 focus:ring-2 focus:ring-red-200',
+    'inputClass' => 'rounded-lg border border-slate-200 bg-white/90 w-full p-3 mt-1 text-slate-700 placeholder-slate-400 shadow-sm focus:border-violet-500 focus:ring-4 focus:ring-violet-100 transition-all',
+    'inputClassWitherror' => 'rounded-lg border border-red-400 bg-red-50 placeholder-red-400 w-full p-3 mt-1 text-red-700 shadow-sm focus:border-red-500 focus:ring-4 focus:ring-red-100',
     'checked' => false,
 ])
 
@@ -41,4 +41,3 @@
     @endif
     <x-general-one-error name="{{$name}}"/>
 </fieldset>
-

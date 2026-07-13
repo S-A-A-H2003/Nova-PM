@@ -1,5 +1,11 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <div class="mb-8 text-center">
+        <h1 class="text-2xl font-bold text-slate-900">{{ __('Register') }}</h1>
+        <p class="mt-2 text-sm text-slate-500">{{ __('Create your Maham account') }}</p>
+    </div>
+
+    <form method="POST" action="{{ route('register') }}" data-requires-confirm="true" data-confirm-title="{{ __('Confirm submission') }}" data-confirm-text="{{ __('Are you sure you want to register?') }}">
+
         @csrf
 
         <!-- Name -->
@@ -40,7 +46,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-white hover:text-violet-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+            <a class="text-sm font-semibold text-slate-500 hover:text-violet-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
 

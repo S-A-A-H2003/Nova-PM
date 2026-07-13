@@ -3,7 +3,7 @@ export default function languages(){
     const form_create_languages = document.getElementById('form_create_languages');
     const view_languages = document.getElementById('view_languages');
 
-    if (button_create_languages) {
+    if (button_create_languages && form_create_languages && view_languages) {
         button_create_languages.addEventListener('click' , function() {
             if (form_create_languages.classList.contains('hidden')) {
                 form_create_languages.classList.remove('hidden');
@@ -14,8 +14,8 @@ export default function languages(){
             }
         })
     }
-    for (let index = 1; index <= languages_counter; index++) {
-        const editBtn = document.getElementById(`button_edit_languages_${index}`);
+    document.querySelectorAll('[id^="button_edit_languages_"]').forEach(function(editBtn) {
+        const index = editBtn.id.replace('button_edit_languages_', '');
         const editForm = document.getElementById(`form_edit_languages_${index}`);
         if (editBtn && editForm) {
             editBtn.addEventListener('click' , function() {
@@ -29,5 +29,5 @@ export default function languages(){
                 }
             })
         }
-    }
+    })
 }

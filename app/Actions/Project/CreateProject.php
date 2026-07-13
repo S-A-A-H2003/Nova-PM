@@ -5,6 +5,7 @@ namespace App\Actions\Project;
 use App\Models\Project;
 use App\Services\Utilities;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
 class CreateProject {
@@ -28,7 +29,7 @@ class CreateProject {
                 $data = [];
                 foreach ($request->file('files') as $file) {
                     $data[] = [
-                        "id" => uuid_create(),
+                        "id" => (string) Str::uuid(),
                         "project_id" => $result->id,
                         "attachment" => $file->store('attachment/project'),
                         "created_at" => now(),

@@ -14,6 +14,8 @@ class SkillsUpdateRequest extends FormRequest
         return true;
     }
 
+    protected $errorBag = 'skills';
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,7 +24,7 @@ class SkillsUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'skills_value' => ['required' , 'string']
+            'skills_value_update' => ['required' , 'string']
         ];
     }
 }

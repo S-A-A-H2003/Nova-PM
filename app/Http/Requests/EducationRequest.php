@@ -14,6 +14,8 @@ class EducationRequest extends FormRequest
         return true;
     }
 
+    protected $errorBag = 'education';
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,13 +24,13 @@ class EducationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "education_value" => ['required' , 'string'],
-            "education_education" => ['required' , 'string'],
-            "education_adress" => ['required' , 'string'],
-            "education_start_date" => ['required' , 'date'],
-            "education_end_date" => ['required' , 'date' ,'after:education_start_date'],
-            "education_gpa" => ['required' , 'numeric' , 'between:0,100'],
-            "education_file" => ['required' , 'file']
+            "education_value_create" => ['required' , 'string'],
+            "education_education_create" => ['required' , 'string'],
+            "education_adress_create" => ['required' , 'string'],
+            "education_start_date_create" => ['required' , 'date'],
+            "education_end_date_create" => ['required' , 'date' ,'after:education_start_date_create'],
+            "education_gpa_create" => ['required' , 'numeric' , 'between:0,100'],
+            "education_file_create" => ['required' , 'file']
         ];
     }
 }

@@ -14,6 +14,8 @@ class LanguagesUpdateRequest extends FormRequest
         return true;
     }
 
+    protected $errorBag = 'languages';
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,9 +24,9 @@ class LanguagesUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "languages_value" => ['required' ,'string'],
-            "languages_level" => ['required' , 'string'],
-            "languages_file" => ['nullable' , 'file']
+            "languages_value_update" => ['required' ,'string'],
+            "languages_level_update" => ['required' , 'string'],
+            "languages_file_update" => ['nullable' , 'file']
         ];
     }
 }

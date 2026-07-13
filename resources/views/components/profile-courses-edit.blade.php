@@ -14,7 +14,7 @@
                 <x-form-fieldset name="courses_start_date" type="month" value="{{json_decode($course->extensions)->courses_start_date}}" lableName="{{ __('Start Date') }}" fieldsetClass="w-full"/>
                 <x-form-fieldset name="courses_end_date" type="month" value="{{json_decode($course->extensions)->courses_end_date}}" lableName="{{ __('End Date') }}" fieldsetClass="w-full"/>
             </div>
-            <x-form-fieldset-file name="courses_file" isUpdate="{{true}}" lableName="{{ __('Certificate (Optional)') }}" fieldsetClass="w-full">
+            <x-form-fieldset-file name="courses_file" lableName="{{ __('Certificate (Optional)') }}" fieldsetClass="w-full">
                 <a href="{{route('utilities.viewFile' , ['App\Models\CvContent' , $course->id , 'extensions' , true ,'courses_file'])}}" target="_blank" class="text-violet-600 hover:text-violet-700 hover:underline text-sm">
                     {{ __('View Previous File') }}
                 </a>
