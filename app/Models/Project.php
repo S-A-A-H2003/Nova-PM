@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Comment;
+use App\Models\Attachment;
 use App\Observers\ProjectObserve;
 use App\Traits\HasSearch;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -59,13 +61,13 @@ class Project extends Model
 
     public function comments()
     {
-        return $this->morphMany(comment::class , 'commentable');
+        return $this->morphMany(Comment::class , 'commentable');
     }
 
     //Attachments
 
     public function attachments()
     {
-        return $this->hasMany(attachment::class);
+        return $this->hasMany(Attachment::class);
     }
 }
