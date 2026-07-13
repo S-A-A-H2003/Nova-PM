@@ -22,6 +22,20 @@
                     {{ __('Pending') }}
                 </span>
                 @endif
+                @if(Illuminate\Support\Facades\Gate::allows('create' , [App\Models\Task::class , $project]))
+                    <span class="bg-violet-100 text-violet-700 px-4 py-2 rounded-full text-sm font-medium" id="button_edit_task">
+                        <x-svg-edit width="25" height="25" />
+                    </span>
+                    <span class="bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-medium">
+                        <form action="{{route('task.destroy' ,[$project->id , $task->id])}}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button>
+                                <x-svg-trash width="20" height="20" />
+                            </button>
+                        </form>
+                    </span>
+                @endif
             </div>
         </div>
         <div class="p-4 w-full bg-white rounded-xl shadow-sm mt-4 border border-gray-100">
@@ -177,5 +191,6 @@
             </form>
         </div>
     </section>
+    <x-task-edit :errors="$errors" :project="$project" :task="$task" id="edit_task" />
 </section>
 @endsection

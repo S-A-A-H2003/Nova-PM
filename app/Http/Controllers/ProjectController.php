@@ -40,6 +40,8 @@ class ProjectController extends Controller
         return redirect()->route('project.index')->with('success' , 'The project was successfully created.');
     }
 
+
+
     public function update(ProjectUpdateRequest $request, UpdateProject $update_project , Project $project)
     {
        Gate::authorize('update' , [Project::class , $project]);

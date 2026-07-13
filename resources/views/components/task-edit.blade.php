@@ -6,9 +6,9 @@
 ])
 <div
     @if($errors->hasAny(['title' , 'task_budget' , 'task_description']))
-        class ="absolute -top-16 right-8 w-[960px] h-fit bg-white shadow-2xl rounded-xl p-6 z-10 ring-1 ring-red-200"
+        class ="absolute top-16 right-8 w-[960px] h-fit bg-white shadow-2xl rounded-xl p-6 z-10 ring-1 ring-red-200"
     @else
-        class ="absolute -top-16 right-8 w-[960px] h-fit bg-white shadow-inner rounded-xl p-6 z-10 hidden"
+        class ="absolute top-16 right-8 w-[960px] h-fit bg-white shadow-inner rounded-xl p-6 z-10 hidden"
     @endif
     id="{{$id}}">
 
